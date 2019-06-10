@@ -1,0 +1,28 @@
+<script>
+  
+  /* Question 1: Given an array 'A' of sorted integers and another non negative integer k, 
+    find if there exists 2 indices i and j such that A[i] - A[j] = k, i != j.
+  */
+
+  // function for find the pair
+  function findPair(arr, size, n) {
+    var i = 0;
+    var j = 1;
+    while (i < size && j < size) {
+      if (i != j && arr[j] - arr[i] == n) {
+        console.log("Pair - ", arr[i], ", ", arr[j]);
+        return true;
+      } else if (arr[j] - arr[i] < n) {
+        j++;
+      } else {
+        i++;
+      }
+    }
+    console.log("Pair not found");
+    return false;
+  }
+  var arr = [1, 8, 30, 40, 100];
+  size = arr.length;
+  var n = 60;
+  var pair = findPair(arr, size, n);
+</script>

@@ -1,0 +1,38 @@
+<script>
+  /* Question 3: Given a binary tree, invert the binary tree and return it. 
+    Look at the example for more details.
+  */
+  var tree = {
+    left: {
+      left: {
+        value: 1
+      },
+      right: {
+        value: 3
+      },
+      value: 2
+    },
+    right: {
+      left: {
+        value: 6
+      },
+      right: {
+        value: 9
+      },
+      value: 7
+    },
+    value: 4
+  };
+
+  function invertTree(node) {
+    if (!node) return;
+
+    var right = invertTree(node.right);
+    var left = invertTree(node.left);
+    if (left) node.left = right;
+    if (right) node.right = left;
+    return node;
+  }
+
+  console.log(JSON.parse(JSON.stringify(tree)), invertTree(tree));
+</script>
